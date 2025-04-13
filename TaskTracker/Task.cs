@@ -19,9 +19,7 @@ namespace TaskTracker
 
                 Title = title;
                 Text = text;
-                Id = TaskRepository.GetNextId();
             }
-
         }
     }
 }
