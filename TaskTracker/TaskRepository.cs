@@ -43,12 +43,19 @@ public class TaskRepository
 
         var sortedTasks = tasks.OrderByDescending(t => t.Priority).ToList();
 
+        Console.WriteLine("+-------+------------------------------------+------------------------------------------+------------+------------------------+");
+        Console.WriteLine("|  ID   | Заголовок задачи                   | Описание                                 | Приоритет  | Статус                 |");
+        Console.WriteLine("+-------+------------------------------------+------------------------------------------+------------+------------------------+");
+
         foreach (var task in sortedTasks)
         {
             string priorityDescription = PriorityHelper.GetPriorityDescription(task.Priority);
-            Console.WriteLine($"{task.Id}, {task.Title} - Приоритет: {priorityDescription} - {(task.isCompleted ? "Выполнена" : "Ожидает выполнения")}");
-            Console.WriteLine($"Описание: {task.Text}\n");
+            string status = task.isCompleted ? "Выполнена" : "Ожидает выполнения";
+
+            Console.WriteLine($"| {task.Id,-5} | {task.Title,-34} | {task.Text,-40} | {priorityDescription,-10} | {status,-22} |");
         }
+
+        Console.WriteLine("+-------+------------------------------------+------------------------------------------+------------+------------------------+");
     }
 
     public void TaskDone(int id)
