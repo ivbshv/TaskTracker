@@ -7,7 +7,7 @@ using System.Linq;
 public class TaskRepository
 {
     private List<Task> tasks;
-    private static int idCounter = 1; 
+    private static int idCounter = 1;
 
     public TaskRepository()
     {
@@ -28,9 +28,9 @@ public class TaskRepository
 
     public void AddTask(Task task)
     {
-        task.Id = GetNextId(); // Назначаем уникальный ID
+        task.Id = GetNextId();
         tasks.Add(task);
-        TaskStorage.SaveTasks(tasks);  // Сохраняем задачи в файл
+        TaskStorage.SaveTasks(tasks);
     }
 
     public void ShowTasks()
@@ -60,7 +60,7 @@ public class TaskRepository
             {
                 task.isCompleted = true;
                 Console.WriteLine($"Задача \"{task.Title}\" отмечена как выполненная.");
-                TaskStorage.SaveTasks(tasks);  // Сохраняем изменения
+                TaskStorage.SaveTasks(tasks);
             }
             else
             {
@@ -80,7 +80,7 @@ public class TaskRepository
         {
             tasks.Remove(task);
             Console.WriteLine($"Задача под номером {id} удалена");
-            TaskStorage.SaveTasks(tasks);  // Сохраняем изменения
+            TaskStorage.SaveTasks(tasks);
         }
         else
         {
@@ -95,7 +95,7 @@ public class TaskRepository
         {
             task.Text = newText;
             Console.WriteLine($"Описание задачи \"{task.Title}\" обновлено.");
-            TaskStorage.SaveTasks(tasks);  // Сохраняем изменения
+            TaskStorage.SaveTasks(tasks);
         }
         else
         {
@@ -127,6 +127,6 @@ public class TaskRepository
 
     private void LoadTasksFromFile()
     {
-        tasks = TaskStorage.LoadTasks();  // Загружаем задачи из файла
+        tasks = TaskStorage.LoadTasks();
     }
 }
